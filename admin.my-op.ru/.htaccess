@@ -1,0 +1,23 @@
+RewriteEngine On
+RewriteBase /
+AddDefaultCharset UTF-8
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteRule (\D*)(\d*) $1.php?owner_id=$2 [L,QSA]
+RewriteRule ^feed$ index.php [L,QSA]
+RewriteRule photo(\d*)_(\d*) photo.php?owner_id=$1&album_id=$2 [L,QSA]
+RewriteRule photo-(\d*)_(\d*) photo.php?group_id=-$1&album_id=$2 [L,QSA]
+RewriteRule album(\d*)_(.*) album.php?owner_id=$1&album_id=$2 [L,QSA]
+#RewriteRule album(\d*)_-(\d*) album.php?owner_id=$1&album_id=$2 [L,QSA]
+RewriteRule albums(\d*) albums.php?owner_id=$1 [L,QSA]
+RewriteRule albums-(\d*) albums.php?group_id=-$1 [L,QSA]
+RewriteRule groups(\d*) groups.php?owner_id=$1 [L,QSA]
+RewriteRule frends(\d*) frends.php?owner_id=$1 [L,QSA]
+RewriteRule id(\d*) index.php?owner_id=$1 [L,QSA]
+#RewriteRule / login.php [L, QSA]
+RewriteRule test(.*) test.php?test=$1 [L,QSA]
+
+
+
+#IndexIgnore index.php index.html
